@@ -4,7 +4,6 @@ sidebar_position: 1
 # Introduction
 :::note Resources
 
-Some **content** with _Markdown_ `syntax`.
 *  [Our tutorial on downloading Android Studio](https://www.youtube.com/watch?v=ig9YUI4wu6c&t=50s)
 * [Official FTC Programming Resources](https://www.firstinspires.org/resource-library/ftc/technology-information-and-resources)
 * [GM0's Getting Started Section](https://gm0.org/en/latest/docs/software/getting-started/index.html)

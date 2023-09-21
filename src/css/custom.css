@@ -10,6 +10,7 @@
   /*.navbar{*/
   /*  background-color: #FFFFFF;*/
   /*}*/
+  --ifm-font-color-base: #3b454e;
   --ifm-navbar-height: 70px;
   --ifm-color-primary: #346ddb;
   --ifm-color-primary-dark: #346ddb;

@@ -7,7 +7,9 @@
 /* You can override the default Infima variables here. */
 
 :root {
-
+  .navbar{
+    background-color: #FFFFFF;
+  }
 .navbar__logo img {
   height: 200%;
   margin-top: -10px;

@@ -47,6 +47,7 @@ const config = {
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
+
         },
       }),
     ],
@@ -56,6 +57,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
+      docs: {
+        sidebar: {
+          autoCollapseCategories: true,
+          hideable: true,
+        },
+      },
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
         title: 'Tech Toolbox',

@@ -14,4 +14,4 @@ Sleep can be useful in auto to wait between doing certain tasks, however, **do n
 
 :::caution
 It is also highly advised to not use while loops during tele-op. Similar to the sleep, it can cause your robot to go haywire, due to the way it runs. If you need something similar to while loops or sleeps in your tele-ops, look into our **State Machines and Timers Section**.
-
+:::

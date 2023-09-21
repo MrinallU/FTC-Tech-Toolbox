@@ -10,10 +10,6 @@
   /*.navbar{*/
   /*  background-color: #FFFFFF;*/
   /*}*/
-.navbar__logo img {
-  height: 200%;
-  margin-top: -10px;
-}
   --ifm-navbar-height: 70px;
   --ifm-color-primary: #346ddb;
   --ifm-color-primary-dark: #346ddb;

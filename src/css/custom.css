@@ -42,12 +42,12 @@
 /*}*/
 
 [data-theme='dark'] {
-  /*#__docusaurus {*/
-  /* background: #181c1f;*/
-  /*}*/
-  /*.navbar{*/
-  /*  background-color: #181c1f;*/
-  /*}*/
+  #__docusaurus {
+   background: #181c1f;
+  }
+  .navbar{
+    background-color: #181c1f;
+  }
   /*--ifm-background-color: #181c1f; */
   --ifm-font-color-base: #FFFFFF;
   --ifm-color-primary: #648fe4;

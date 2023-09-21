@@ -31,7 +31,7 @@ body {
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
   #__docusaurus {
-   background: #181c1f !important;
+   background: #181c1f;
   }
   .navbar{
     background-color: #181c1f;

@@ -1,20 +1,21 @@
 ---
 sidebar_position: 4
 ---
-# Creating an OpMode
+# Motors and Encoders
 
 DC Motors in FTC are used for movement of large mechanisms and can be used for fast and continuous rotation, or precise movement for things like an arm. It is very important to learn how to efficiently program motors.
 
 ## Motor Initialization
 
-The first step in using a motor is to initialize it as a variable in the code. This is done through the use of an object named hardwareMap that is used for easy initialization of FTC Objects.
+The first step in using a motor is to initialize it as a variable in the code. This is done through the use of an object named **hardwareMap** that is used for easy initialization of FTC Objects.
 ```java 
 DcMotor driveMotor;       
 driveMotor = hardwareMap.get(DcMotor.class, "Drive Motor");  
 ```
-In this example, first the driveMotor variable is created through the use of the DcMotor object. Then the hardwareMap is used to initialize and name the motor, this should be the same name used in the configuration of the Motor on the phone.
-## OpMode
-An OpMode class is composed of five different methods that you can write your code inside. The code in the five different methods runs in a different time/way.
+In this example, first the `driveMotor` variable is created through the use of the `DcMotor` object. Then the hardwareMap is used to initialize and name the motor, this should be the same name used in the configuration of the Motor on the phone.
+## DcMotor Setup Usage
+
+There are many methods that for the DcMotor that can be used before the motor is powered to change how it behaves when it runs.
 
 * `init()` - Code inside this method will run once after the program is initialized.
 * `init_loop()` - Code inside this method will loop repeatedly while the program is initialized.

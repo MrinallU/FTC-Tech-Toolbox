@@ -35,7 +35,7 @@ FTC teams harness the power of these encoder motors to program their robots with
 
 On the other hand, the motor's velocity is also measured by the encoder through the number of ticks per second the motor is traveling. 
 
-## Run Mode
+### Run Mode
 ```java 
 driveMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 driveMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -62,12 +62,26 @@ When using RUN_TO_POSITION, the power should not ever be negated as the motor wi
 
 :::
 
-## Finding Motor Position
+### Finding Motor Position
 When using encoders, there is a useful method that can be used to find the motors position in encoder ticks.
 ```java 
 int position;
 position = motor.getCurrentPosition();
 ```
+### Moving a Motor to a Position Using Encoders
+To move a motor to a target encoder position(given in ticks), we will first be introducing two more commands. `setTargetPosition()` takes in a tick value for the motor that becomes its target position. `setPower()` sets a [-1,1] value for the motor speed to run at. A power below 0 runs the motor in the opposite direction.  
+
+```java 
+TARGET_TICK_VALUE = 600;      
+driveMotor.setTargetPosition(TARGET_TICK_VALUE);    //Sets Target Tick Position
+driveMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION); 
+driveMotor.setPower(1);           //Sets Motor to go to position at 1 power.
+```
+In the example the motor is set to run to a target position of 600 ticks, the amount of rotations this is will depend on the ticks per rotation of that specific motor. After setting the target position the motor is set to the `RUN_TO_POSITION` mode, then set to a power of 1, or full power, to run to its target position.
+
+:::info
+When using RUN_TO_POSITION, the power should not ever be negated as the motor will go towards whatever direction the tick count is. If the motor needs to go in the opposite direction, use a negative tick count.
+:::
 
 :::info
 

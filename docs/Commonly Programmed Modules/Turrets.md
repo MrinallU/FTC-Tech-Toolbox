@@ -2,6 +2,10 @@
 sidebar_position: 3
 ---
 # Turrets
+:::note Prerequisites
+* [Localization](../odo/What%20is%20Localization.md)
+* [Computer Vision](../category/computer-vision)
+:::
 
 In recent times, the integration of turrets in robot designs has become increasingly prevalent among the world's top-performing robots. A turret is a mechanism that enables independent rotation of one or more modules from the main body of the robot. This feature is valued for the enhanced mobility it offers. By incorporating a turret, teams can avoid the need to turn the entire robot for scoring purposes, resulting in a substantial elevation of their scoring capabilities.
 

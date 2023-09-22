@@ -18,6 +18,6 @@ Shooter Physics
 ## Setting Shooter Powers Via Linear Regression: 
 When attempting to shoot an object at a certain distance away from a target, knowing what power to set can often be a mystery without performing intensive calculations. However, by making use of linear regression, we can easily calculate the correct power that one must apply to the flywheel motor to hit the target. 
 
-Scroll to the bottom of our linear regression page to see the explanation and implementation.
-https://ftc-code.gitbook.io/tech-toolbox/computer-vision/linear-regression
+[Scroll to the bottom of our linear regression page to see the explanation and implementation.
+](../Computer%20Vision/g.md)
 

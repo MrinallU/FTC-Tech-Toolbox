@@ -1,6 +1,6 @@
 {
-  "label": "Commonly Programmed Modules",
-  "position": 2,
+  "label": "Localization / Odometry",
+  "position": 5,
   "link": {
     "type": "generated-index",
     "description": " "

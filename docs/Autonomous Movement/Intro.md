@@ -5,7 +5,7 @@ sidebar-position: 1
 * [Localization](../odo/What%20is%20Localization.md)
 * [Control Theory](../category/control-theory)
 :::
-* 
+
 # Introduction
 
 Autonomous movement, undoubtedly one of the most intricate aspects of FTC programming, brings together all the concepts and techniques covered in the preceding modules, making it a particularly challenging concept to grasp.

@@ -3,6 +3,7 @@
 * [Official FTC Video Docs](https://www.youtube.com/watch?v=iQufRF1HFRc) - **Must Watch!**
 * [FTC Tricks](https://ftc-tricks.com/overview-color-sensor/)
 It is commonly known that colors can be broken down into three basic colors: red, green, and blue. The color sensor scans what is in front of it and returns the basic color values of the scene. By comparing these returned values to predefined threshold values, we can easily determine what color an object in front of the robot is. 
+:::
 
 ## Initialization
 ```java 

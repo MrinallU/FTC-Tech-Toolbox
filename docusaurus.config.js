@@ -80,7 +80,7 @@ const config = {
         title: 'Tech Toolbox',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'img/favicon.png',
         },
         items: [
           {

@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <Layout
       title=""
-      description="Description will go into a meta tag in <head />">
+      description="A Programming Guide for the FIRST Tech Challenge Robotics Compeititon <head/>">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

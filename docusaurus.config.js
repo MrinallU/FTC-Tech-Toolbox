@@ -73,7 +73,7 @@ const config = {
           hideable: true,
         },
       },
-      image: "img/logo.png",
+      image: "img/3C66A2BC-AA1E-4DF1-A01C-1009AC2F63F3.jpeg",
       navbar: {
         title: "Tech Toolbox",
         logo: {

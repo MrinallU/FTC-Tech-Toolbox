@@ -2,6 +2,9 @@
 sidebar-position: 6
 ---
 # VSLAM 
+:::danger
+The T265 camera and the use of it for VSLAM has now been banned from FTC effective from the 2023-24 CENTERSTAGE Season. We are leaving this page up to help out teams who are looking to experiment with it as a project for learning, but DO NOT COMPETE with this camera as it will not be allowed at inspection.
+:::
 
 In FTC, VSLAM is a way of localization that makes use of a specific camera. In FTC, the specific camera used is called the [Intel T265 Camera](https://www.intelrealsense.com/tracking-camera-t265/). It uses its fisheye lenses in accordance with its variety of sensors to return a pose regarding the robot's location.
 
@@ -11,10 +14,7 @@ There has been an api created for the T265 camera, this github page gives all th
 
 https://github.com/pietroglyph/ftc265
 
-:::danger
-We do not reccomend usage of VSLAM and the T265 camera for robot localization. First off, Intel has discontinued production of this camera, so it can be hard(and expensive) to get your hands on it. However, the main problem is the api for this camera seems to pose many challenges that can be very hard to fix. To ensure your auto will work properly, this camera requires sufficient testing to ensure it is recording positions on every initialization, something that refs will not like in matches. Also, it often bugs out and does not work due to the nature of the FTC field having constantly moving objects. Furthermore, there are instances where the camera won't start up when run and causes your robot to keep going straight. Our team speaks from experience as we have utilized the Intel T265 in previous seasons, but now stick to a deadwheel odometry setup.
-:::
+
 
 > **Intel**: 
 > "An ideal operating environment for the T265 has a reasonable number of fixed, distinct visual features in view. It will perform poorly if the entire field of view contains moving, near field objects such as people"
-

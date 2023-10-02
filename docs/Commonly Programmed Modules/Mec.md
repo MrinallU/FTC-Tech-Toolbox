@@ -4,7 +4,7 @@ sidebar_position: 2
 # Mecanum Drive (Part 1)
 :::note Resources
 
-* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) -  Extremely detailed tutorial explaining mecanum drive control along with implementations. Must read before proceeding.
+* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations about the math and logic behind mecanum drive control along code implementations. **Must read before proceeding!**
 * [FTC Team 7477's Mecanum Drive Video](https://www.youtube.com/watch?v=SdcV15RQxkQ) - Supplemental resource explaining how a mecanum drive train would appear on a physical robot.
 * [FTC Team 9794's Mecanum Block Programming Video](https://www.youtube.com/watch?v=cXrDz1cb8N0) - For block code users.
 

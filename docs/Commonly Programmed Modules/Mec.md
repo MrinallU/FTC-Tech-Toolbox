@@ -4,7 +4,7 @@ sidebar_position: 2
 # Mecanum Drive (Part 1)
 :::note Resources
 
-* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations about the math and logic behind mecanum drive control along code implementations. **Must read before proceeding!**
+* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations regarding the math and logic behind mecanum drive code along ready to use code. **Must read before proceeding!**
 * [FTC Team 7477's Mecanum Drive Video](https://www.youtube.com/watch?v=SdcV15RQxkQ) - Supplemental resource explaining how a mecanum drive train would appear on a physical robot.
 * [FTC Team 9794's Mecanum Block Programming Video](https://www.youtube.com/watch?v=cXrDz1cb8N0) - For block code users.
 
@@ -14,7 +14,9 @@ sidebar_position: 2
 A mecanum drive system makes use of a special type of wheel known as mecanum wheels which allow robots to move not only forward and backward, but sideways as well. Here is a quick demo of the capabilities of mecanum:
 <iframe width="100%" height="422" src="https://www.youtube.com/embed/noqBUEgyQ8A" title="The Brilliant Engineering of Mecanum Wheels!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 Mecanum drive systems allow teams to move efficiently during both the autonomous and driver-controlled periods due to the added directions of movement that are not present in tank drive trains. Moreover, due to its ease of construction mecanum drive trains over other options (ie differential swerve), mecanum is the most used drive variation in FTC robotics. 
+
 ## How It Works
+
 The mecanum drive train consists of two sets of wheels, two right wheels, and two left wheels, depending on the direction the rollers are facing. The rollers are angled at 45°. The force vectors created by the wheel arrangement propel the drive train in different directions.
 
 ![Example banner](../assets/mec.png)

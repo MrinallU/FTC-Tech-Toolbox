@@ -4,15 +4,15 @@
 * [FTC's Official IMU Guide](https://ftc-docs.firstinspires.org/en/latest/programming_resources/imu/imu.html) - **Must Read**
 :::
 
-The IMU, short for inertial measurement unit, is a sensor located within your control hub that provides information about your robot's rotational position. It helps you understand how your robot is moving and how it's oriented. Most effective control systems rely on this sensor to make accurate decisions and control the robot's behavior.
+The IMU, short for inertial measurement unit, is a sensor located within your control hub that provides information about your robot's rotational position (typically used to attain a measurement of the robot's heading). It helps you understand how your robot is moving and how it's oriented. Most effective control systems rely on this sensor to make accurate decisions and control the robot's behavior.
 
 To create a robust control system, it's important to develop a strong understanding of IMU programming. This involves learning how to read the sensor's data, interpret it correctly, and use it to make informed decisions about controlling the robot's movements. By leveraging the capabilities of the IMU, you can enhance the performance and stability of your robot's control system.
 
 Here are some of the use cases for the IMU: 
-* [Robot Localization](../odo/What%20is%20Localization.md) - allows you to get the current angle of the robot
+* [Robot Localization](../odo/What%20is%20Localization.md) - Allows you to get the current angle of the robot
 * [Turret Alignment](../Commonly%20Programmed%20Modules/Turrets.md)
-* Anti-Tipping (Code in this section!) - querying your roll, pitch, or yaw and driving backward when they get too high, signals that your robot is beginning to tip over. 
-* [Accurate Turning](../Commonly%20Programmed%20Modules/Tank.md)  - make your robot turn to a specific angle. 
+* Anti-Tipping (Code in this section!) - Querying your roll, pitch, or yaw and driving backward when they get too high, thus preventing your robot from tipping over. 
+* [Accurate Turning](../Commonly%20Programmed%20Modules/Tank.md)  - Make your robot turn to a specific angle. 
 
 :::info
 Because the official FTC guide is so comprehensive when going over IMU setup and programming we will just provide you with a template.

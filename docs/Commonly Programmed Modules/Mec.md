@@ -4,7 +4,7 @@ sidebar_position: 2
 # Mecanum Drive (Part 1)
 :::note Resources
 
-* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations regarding the math and logic behind mecanum drive code along ready to use code. **Must read before proceeding!**
+* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations regarding the math and logic behind mecanum drive code along with sample opmodes. **Must read before proceeding!**
 * [FTC Team 7477's Mecanum Drive Video](https://www.youtube.com/watch?v=SdcV15RQxkQ) - Supplemental resource explaining how a mecanum drive train would appear on a physical robot.
 * [FTC Team 9794's Mecanum Block Programming Video](https://www.youtube.com/watch?v=cXrDz1cb8N0) - For block code users.
 
@@ -70,8 +70,12 @@ The following code is provided to showcase a simple method of autonomously contr
 
 <iframe width="100%" height="422" src="https://www.youtube.com/embed/s5djL5tj8js" title="Meet 3 Match 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+
 The logic behind this code is fairly simple, we make use of field-centric driving to make the robot drive forward or sideways for some number of seconds. Making use of encoders should make this movement fairly accurate as a velocity PID will be automatically enabled. However please note that **later modules will provide code that is far superior to the following implementation!**
 We also use a heavily simplified version of a PID controller to enable the robot to turn to a desired angle while moving, making use of the IMU to do this. 
+
+Note that because we make use of field centric drive code. The robot will always drive and strafe in the same direction regardless of the robots heading. This makes things alot easier for the programmer as they do not need to worry about adjusting the command velocities to account for a change in rotation.
+
 ### Code
 :::info
 Note that in the following line: `double turn = Range.clip(angleDiff * 0.01, -1, 1);` we set the power that the robot should turn at to reach the angle desired.  You can modify this speed as needed by changing the constant 0.01 as needed, increasing it to increase the turn speed, and decreasing it to slow the robot down. 

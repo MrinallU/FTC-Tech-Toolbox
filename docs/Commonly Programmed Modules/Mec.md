@@ -74,7 +74,9 @@ The following code is provided to showcase a simple method of autonomously contr
 The logic behind this code is fairly simple, we make use of field-centric driving to make the robot drive forward or sideways for some number of seconds. Making use of encoders should make this movement fairly accurate as a velocity PID will be automatically enabled. However please note that **later modules will provide code that is far superior to the following implementation!**
 We also use a heavily simplified version of a PID controller to enable the robot to turn to a desired angle while moving, making use of the IMU to do this. 
 
-Note that because we make use of field centric drive code. The robot will always drive and strafe in the same direction regardless of the robots heading. This makes things alot easier for the programmer as they do not need to worry about adjusting the command velocities to account for a change in rotation.
+Note that because we make use of field centric drive code the robot will always drive and strafe in the same direction regardless of the robots heading. Field centric does this by modifying the drive and strafe commands in accordance with the robot's heading such that the velocity commands will make the robot move in the same direction regardless of its orientation.  **For instance, setting the strafe velocity to -0.1 will always make the robot move sideways to the left regardless of what direction the robot is in. If we made use of robot centric driving setting the strafe command to -0.1 when the robot is facing 90 degrees would actually make it drive forwards.**
+
+This makes things alot easier for the programmer as they do not need to worry about adjusting the command velocities to account for a change in the robot's heading.
 
 ### Code
 :::info

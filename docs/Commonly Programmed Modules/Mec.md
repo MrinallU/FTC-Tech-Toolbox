@@ -16,6 +16,7 @@ A mecanum drive system makes use of a special type of wheel known as mecanum whe
 Mecanum drive systems allow teams to move efficiently during both the autonomous and driver-controlled periods due to the added directions of movement that are not present in tank drive trains. Moreover, due to its ease of construction mecanum drive trains over other options (ie differential swerve), mecanum is the most used drive variation in FTC robotics. 
 ## How It Works
 The mecanum drive train consists of two sets of wheels, two right wheels, and two left wheels, depending on the direction the rollers are facing. The rollers are angled at 45°. The force vectors created by the wheel arrangement propel the drive train in different directions.
+
 ![Example banner](../assets/mec.png)
 
 This picture is a very good reference to show how the different combinations of power set to the wheels change the direction the drive train will go. 

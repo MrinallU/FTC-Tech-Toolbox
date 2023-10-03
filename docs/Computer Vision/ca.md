@@ -1,4 +1,4 @@
-# FTC Vision Portal
+# Intro to FTC Vision Portal
 
 As of the 2023-2024 season, there have been some changes made to the standard systems made for computer vision that teams have been used to. The FTC SDK has released a new Vision Portal, which incorporates all vision tools within the SDK without the need for external libraries.
 

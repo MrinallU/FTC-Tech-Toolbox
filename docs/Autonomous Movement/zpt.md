@@ -74,21 +74,25 @@ For a more in-depth explanation of the math behind GVFs please refer to the foll
 ## Implementation
 The following repositories contain implementations of path following via GVFs. However, each code base implements the algorithm differently:
 
+### Option 1
 This repository makes use of cubic bezier splines **(recommended)**
 
 **This code visualizes the vector field rather than plugging the values into motors. To make this code useable in FTC you will need to plug the movement vector values into a field-centric driving function, which can be found in our mecanum modules.**
 
 https://github.com/FTC-9974-THOR/GuidedVectorField
 
+### Option 2
 This repository creates paths by manually entering the coefficients of the spline equation meaning it is not intuitive to use, however, you can easily adapt this code such that it automatically generates the coefficients of a cubic bezier spline. 
 
 https://github.com/jw5243/MPC-Lib/blob/master/MPCLib/src/main/java/com/horse/mpclib/examples/RobotGVF.java
 
-This repository provides a GVF implementation in the form of a library, although it is written in Kotlin experienced programmers should be able to convert the code into Java with a little effort.
+### Option 3
+This repository provides a GVF implementation in the form of a library. Although it is written in Kotlin. experienced programmers should be able to convert the code into Java with a little effort.
 https://github.com/AsianKoala/koawalib
 
 This repository is written in Python however it is a great tool to visualize GVFs.
 https://github.com/AsianKoala/gvf
 
+### Option 4
 Written with ROS not FTC SDK:
 https://github.com/adrianomcr/vectorfield_stack/tree/main/distancefield/scripts/distancefield

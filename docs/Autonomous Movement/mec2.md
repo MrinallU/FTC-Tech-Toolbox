@@ -4,8 +4,9 @@ sidebar-position: 2
 # Mecanum Drive (Part 2)
 
 :::note Resources
-* Mecanum Drive (Part 1) 
-* Localization
+* [Mecanum Drive (Part 1)](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Mec) 
+* [Localization](https://ftc-tech-toolbox.vercel.app/docs/category/localization--odometry)
+* [PID Control](https://ftc-tech-toolbox.vercel.app/docs/Control%20Theory/pid)
 * [Gluten Free's Move to Position Tutorial](https://www.youtube.com/watch?v=3l7ZNJ21wMo) - Alternative method which doesn't make use of PID.
 * [CTL-ALT-FTC's Mecanum Controller](https://www.ctrlaltftc.com/practical-examples/drivetrain-control#mecanum-drivetrain-controller) - Another high-quality tutorial.
 :::

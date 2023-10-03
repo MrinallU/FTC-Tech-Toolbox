@@ -6,8 +6,8 @@ sidebar-position: 3
 
 :::notes Resources
 * [CTRL-ALT-FTC](https://www.ctrlaltftc.com/practical-examples/drivetrain-control#differential-drivetrain-controller) - **Must Read**
-* Mecanum Drive (Part 2)
-* Localization
+* [Mecanum Drive (Part 2)](https://ftc-tech-toolbox.vercel.app/docs/Autonomous%20Movement/mec2)
+* [Localization](https://ftc-tech-toolbox.vercel.app/docs/category/localization--odometry)
 :::
 
 We will now be creating a far more accurate movement system for our tank robot, which if done correctly, should look something like this:

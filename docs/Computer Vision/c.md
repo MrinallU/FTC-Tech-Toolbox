@@ -1,4 +1,4 @@
-# Vuforia
+# Intro to Vuforia
 
 Vuforia is a library often used with vision detection for FTC. To use Vuforia, you will need to obtain a Vuforia license key. Luckily, this process is simple and steps can be found [here](https://library.vuforia.com/getting-started/vuforia-license-manager).
 

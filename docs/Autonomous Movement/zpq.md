@@ -8,6 +8,9 @@ sidebar-position: 3
 Note that this module assumes that you have watched Gluten-free's pure pursuit tutorial linked in the previous module.
 :::
 
+:::note Prerequisite 
+* [Mecanum Drive Part 2](https://ftc-tech-toolbox.vercel.app/docs/Autonomous%20Movement/mec2)
+::: 
 
 Note that the video tutorials `moveToPosition` function only outputs the desired x and y powers for the robot to reach its final position. We need to convert these values into values we can input into the drive motors while accounting for the robot's angular orientation. Luckily field centric driving does precisely this. 
 

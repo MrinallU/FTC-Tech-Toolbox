@@ -1,13 +1,8 @@
-# Computer Vision Simulators
+# FTC Vision Portal
 
-Using simulation software you can use images that you have saved from the robot's camera steam to test your computer vision code without a physical robot. 
+As of the 2023-2024 season, there have been some changes made to the standard systems made for computer vision that teams have been used to. The FTC SDK has released a new Vision Portal, which incorporates all vision tools within the SDK without the need for external libraries.
 
-### OpenCV 
+# Major Changes
+One major reason for these changes has been the new April Tag support within the FTC SDK, allowing for accurate reading of April Tags on the field with an inch of accuracy. The FTC uses its own VisionProcessor class now to process frames for april tags as well as for OpenCV, this is what you are using and extending in your classes from now on.
 
-The FTC community has created an excellent simulator to test your OpenCV pipelines: ECOV Sim. Simply upload the image into the software and link your pipeline file to test your code. The documentation regarding running the simulator is already very comprehensive so we will just provide the link: 
-
-https://deltacv.gitbook.io/eocv-sim/
-
-### Vuforia 
-
-Unfortunately, there does not seem to be any Vuforia simulation software specifically made for FTC robotics. 
+We will discuss setup and use with VisionPortal and the Vision Processor in the following pages.

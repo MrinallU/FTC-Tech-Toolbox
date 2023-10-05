@@ -4,7 +4,8 @@ sidebar_position: 2
 # Mecanum Drive (Part 1)
 :::note Resources
 
-* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) -  Extremely detailed tutorial explaining mecanum drive control along with implementations. Must read before proceeding.
+* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations regarding the math and logic behind mecanum drive code along with sample opmodes. **Must read before proceeding!**
+* [PID Control](https://ftc-tech-toolbox.vercel.app/docs/Control%20Theory/pid) - **Must Read**
 * [FTC Team 7477's Mecanum Drive Video](https://www.youtube.com/watch?v=SdcV15RQxkQ) - Supplemental resource explaining how a mecanum drive train would appear on a physical robot.
 * [FTC Team 9794's Mecanum Block Programming Video](https://www.youtube.com/watch?v=cXrDz1cb8N0) - For block code users.
 
@@ -14,8 +15,11 @@ sidebar_position: 2
 A mecanum drive system makes use of a special type of wheel known as mecanum wheels which allow robots to move not only forward and backward, but sideways as well. Here is a quick demo of the capabilities of mecanum:
 <iframe width="100%" height="422" src="https://www.youtube.com/embed/noqBUEgyQ8A" title="The Brilliant Engineering of Mecanum Wheels!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 Mecanum drive systems allow teams to move efficiently during both the autonomous and driver-controlled periods due to the added directions of movement that are not present in tank drive trains. Moreover, due to its ease of construction mecanum drive trains over other options (ie differential swerve), mecanum is the most used drive variation in FTC robotics. 
+
 ## How It Works
+
 The mecanum drive train consists of two sets of wheels, two right wheels, and two left wheels, depending on the direction the rollers are facing. The rollers are angled at 45°. The force vectors created by the wheel arrangement propel the drive train in different directions.
+
 ![Example banner](../assets/mec.png)
 
 This picture is a very good reference to show how the different combinations of power set to the wheels change the direction the drive train will go. 
@@ -67,8 +71,14 @@ The following code is provided to showcase a simple method of autonomously contr
 
 <iframe width="100%" height="422" src="https://www.youtube.com/embed/s5djL5tj8js" title="Meet 3 Match 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+
 The logic behind this code is fairly simple, we make use of field-centric driving to make the robot drive forward or sideways for some number of seconds. Making use of encoders should make this movement fairly accurate as a velocity PID will be automatically enabled. However please note that **later modules will provide code that is far superior to the following implementation!**
 We also use a heavily simplified version of a PID controller to enable the robot to turn to a desired angle while moving, making use of the IMU to do this. 
+
+Note that because we make use of field centric drive code the robot will always drive and strafe in the same direction regardless of the robots heading. Field centric does this by modifying the drive and strafe commands in accordance with the robot's heading such that the velocity commands will make the robot move in the same direction regardless of its orientation.  **For instance, setting the strafe velocity to -0.1 will always make the robot move sideways to the left regardless of what direction the robot is in. If we made use of robot centric driving, setting the strafe command to -0.1 when the robot is facing 90 degrees would actually make it drive forwards.**
+
+This makes things alot easier for the programmer as they do not need to worry about adjusting the command velocities to account for a change in the robot's heading.
+
 ### Code
 :::info
 Note that in the following line: `double turn = Range.clip(angleDiff * 0.01, -1, 1);` we set the power that the robot should turn at to reach the angle desired.  You can modify this speed as needed by changing the constant 0.01 as needed, increasing it to increase the turn speed, and decreasing it to slow the robot down. 
@@ -176,8 +186,35 @@ public class Robot {
   public void runOpMode() throws InterruptedException {}
 }
 ```
+#### Tele-Op Class 
+This modified version of the class above can be utilized during Tele-op to use field-centric driving in the Tele-op period. It uses the same math but replaces the predeterimined `drive` and `strafe` values with the the left joystick and the right joystick values (Split Arcade) as the inputs. 
 
-#### Opmode
+:::info 
+If you would like to learn more about how field centric drive works and the math behind it, you can access it [here](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html#field-centric-final-sample-code) 
+:::
+
+```java
+public void fieldCentricTeleop(Gamepad gamepad) {
+  double leftY = -gamepad.left_stick_y; // Remember, Y stick is reversed!
+  double leftX = gamepad.left_stick_x;
+  double rightX = gamepad.right_stick_x;
+  double botHeading = -robotOrientation.getYaw(AngleUnit.RADIANS)
+  double rotX = x * Math.cos(botHeading) - y * Math.sin(botHeading);
+  double rotY = x * Math.sin(botHeading) + y * Math.cos(botHeading);
+
+  double denominator = Math.max(Math.abs(leftY) + Math.abs(leftX) + Math.abs(rightX), 1);
+  fLeftPow = (rotY + rotX + turn) / denominator;
+  bLeftPow = (rotY - rotX + turn) / denominator;
+  fRightPow = (rotY - rotX - turn) / denominator;
+  bRightPow = (rotY + rotX - turn) / denominator;
+
+  bLeftMotor.setPower(bLeftPow);
+  fLeftMotor.setPower(fLeftPow);
+  bRightMotor.setPower(bRightPow);
+  fRightMotor.setPower(fRightPow);
+}
+```
+#### Autonomous Implementation
 ```java 
 import com.qualcomm.robotcore.util.ElapsedTime;
 

@@ -3,6 +3,7 @@
 :::note Resources
 
 <<<<<<< HEAD
+
 - [FTC's Official IMU Guide](https://ftc-docs.firstinspires.org/en/latest/programming_resources/imu/imu.html) - **Must Read**
   :::
 
@@ -23,18 +24,18 @@ Here are some of the use cases for the IMU:
 - Anti-Tipping (Code in this section!) - querying your roll, pitch, or yaw and driving backward when they get too high, signals that your robot is beginning to tip over.
 - [Accurate Turning](../Commonly%20Programmed%20Modules/Tank.md) - make your robot turn to a specific angle.
 - Heading Lock (Code in this section!) - using a PID loop and the robots rotational heading, we can make sure that the robots heading will not change while your autonomous is running.
-- [Robot Centric Driving]
-=======
-The IMU, short for inertial measurement unit, is a sensor located within your control hub that provides information about your robot's rotational position (typically used to attain a measurement of the robot's heading). It helps you understand how your robot is moving and how it's oriented. Most effective control systems rely on this sensor to make accurate decisions and control the robot's behavior.
+- # [Robot Centric Driving]
+  The IMU, short for inertial measurement unit, is a sensor located within your control hub that provides information about your robot's rotational position (typically used to attain a measurement of the robot's heading). It helps you understand how your robot is moving and how it's oriented. Most effective control systems rely on this sensor to make accurate decisions and control the robot's behavior.
 
 To create a robust control system, it's important to develop a strong understanding of IMU programming. This involves learning how to read the sensor's data, interpret it correctly, and use it to make informed decisions about controlling the robot's movements. By leveraging the capabilities of the IMU, you can enhance the performance and stability of your robot's control system.
 
-Here are some of the use cases for the IMU: 
-* [Robot Localization](../odo/What%20is%20Localization.md) - Allows you to get the current angle of the robot
-* [Turret Alignment](../Commonly%20Programmed%20Modules/Turrets.md)
-* Anti-Tipping (Code in this section!) - Querying your roll, pitch, or yaw and driving backward when they get too high, thus preventing your robot from tipping over. 
-* [Accurate Turning](../Commonly%20Programmed%20Modules/Tank.md)  - Make your robot turn to a specific angle. 
->>>>>>> 7b3d3d67f0da12b5c98ecb16d80671e81f4ebba1
+Here are some of the use cases for the IMU:
+
+- [Robot Localization](../odo/What%20is%20Localization.md) - Allows you to get the current angle of the robot
+- [Turret Alignment](../Commonly%20Programmed%20Modules/Turrets.md)
+- Anti-Tipping (Code in this section!) - Querying your roll, pitch, or yaw and driving backward when they get too high, thus preventing your robot from tipping over.
+- [Accurate Turning](../Commonly%20Programmed%20Modules/Tank.md) - Make your robot turn to a specific angle.
+  > > > > > > > 7b3d3d67f0da12b5c98ecb16d80671e81f4ebba1
 
 :::info
 Because the official FTC guide is so comprehensive when going over IMU setup and programming we will just provide you with a template.
@@ -155,10 +156,11 @@ public void setDrivePowers(double bLeftPow, double fLeftPow, double bRightPow, d
 Many FTC teams utilize heading lock to ensure that when they run their autonomous programs, their robots heading will stay constant. This can also be used in Tele-op to maintain ur heading when cycling or traversing the field.
 
 :::info
-Heading lock utilizes a PID loop and field-centric drive, so if you are still unfamiliar with PID loops or field centric drive you can learn more about them here: 
-* **[PID](docs\Control Theory\Intro.md)**
-* **[Field Centric Drive](docs\Commonly Programmed Modules\Mec.md)**
-:::
+Heading lock utilizes a PID loop and field-centric drive, so if you are still unfamiliar with PID loops or field centric drive you can learn more about them here:
+
+- **[PID](docs\Control Theory\Intro.md)**
+- **[Field Centric Drive](docs\Commonly Programmed Modules\Mec.md)**
+  :::
 
 Heading lock code can be implmented as followed:
 

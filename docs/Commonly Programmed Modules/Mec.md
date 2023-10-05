@@ -1,20 +1,24 @@
 ---
 sidebar_position: 2
 ---
+
 # Mecanum Drive (Part 1)
+
 :::note Resources
 
-* [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations regarding the math and logic behind mecanum drive code along with sample opmodes. **Must read before proceeding!**
-* [PID Control](https://ftc-tech-toolbox.vercel.app/docs/Control%20Theory/pid) - **Must Read**
-* [FTC Team 7477's Mecanum Drive Video](https://www.youtube.com/watch?v=SdcV15RQxkQ) - Supplemental resource explaining how a mecanum drive train would appear on a physical robot.
-* [FTC Team 9794's Mecanum Block Programming Video](https://www.youtube.com/watch?v=cXrDz1cb8N0) - For block code users.
+- [GM0's Mecanum Drive Tutorial](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html) - Detailed tutorial containing explanations regarding the math and logic behind mecanum drive code along with sample opmodes. **Must read before proceeding!**
+- [PID Control](https://ftc-tech-toolbox.vercel.app/docs/Control%20Theory/pid) - **Must Read**
+- [FTC Team 7477's Mecanum Drive Video](https://www.youtube.com/watch?v=SdcV15RQxkQ) - Supplemental resource explaining how a mecanum drive train would appear on a physical robot.
+- [FTC Team 9794's Mecanum Block Programming Video](https://www.youtube.com/watch?v=cXrDz1cb8N0) - For block code users.
 
 :::
 
 ## What is Mecanum?
+
 A mecanum drive system makes use of a special type of wheel known as mecanum wheels which allow robots to move not only forward and backward, but sideways as well. Here is a quick demo of the capabilities of mecanum:
+
 <iframe width="100%" height="422" src="https://www.youtube.com/embed/noqBUEgyQ8A" title="The Brilliant Engineering of Mecanum Wheels!" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-Mecanum drive systems allow teams to move efficiently during both the autonomous and driver-controlled periods due to the added directions of movement that are not present in tank drive trains. Moreover, due to its ease of construction mecanum drive trains over other options (ie differential swerve), mecanum is the most used drive variation in FTC robotics. 
+Mecanum drive systems allow teams to move efficiently during both the autonomous and driver-controlled periods due to the added directions of movement that are not present in tank drive trains. Moreover, due to its ease of construction mecanum drive trains over other options (ie differential swerve), mecanum is the most used drive variation in FTC robotics.
 
 ## How It Works
 
@@ -22,12 +26,14 @@ The mecanum drive train consists of two sets of wheels, two right wheels, and tw
 
 ![Example banner](../assets/mec.png)
 
-This picture is a very good reference to show how the different combinations of power set to the wheels change the direction the drive train will go. 
+This picture is a very good reference to show how the different combinations of power set to the wheels change the direction the drive train will go.
 
 ## TeleOp Implementation (Robot Centric)
+
 The concept of the mecanum drive implementation relates to the tank drive train implementation. However, in this case, you need three components. Those are drive, turn, and strafe. As you've probably realized the only difference in programming the mecanum drive and tank drive is the strafe component.
 We are using the left joystick y-axis for the drive, the right joystick x-axis for the turn, and the left joystick x-axis for the strafe. Assume frontLeft, frontRight, backLeft, and backRight are the initialized drive motors.
-```java 
+
+```java
 double drive;
 double turn;
 double strafe;
@@ -38,7 +44,7 @@ double fLeftPow, fRightPow, bLeftPow, bRightPow;
 frontRight.setDirection(DcMotor.Direction.REVERSE);
 backRight.setDirection(DcMotor.Direction.REVERSE);
 
-drive = gamepad1.left_stick_y * -1; 
+drive = gamepad1.left_stick_y * -1;
 turn = gamepad1.right_stick_x;
 strafe = gamepad1.left_stick_x;
 
@@ -50,10 +56,11 @@ bRightPow = Range.clip(drive - turn + strafe, -1, 1);
 frontLeft.setPower(fLeftPow);
 backLeft.setPower(bLeftPow);
 frontRight.setPower(fRightPow);
-backRight.setPower(bRightPow); 
+backRight.setPower(bRightPow);
 
 ```
-As you can see, the drive and turn components are the same as the tank drive. However, due to the fact that strafing needs wheels on the same side to be spinning in opposite directions, each wheel will need its own power. 
+
+As you can see, the drive and turn components are the same as the tank drive. However, due to the fact that strafing needs wheels on the same side to be spinning in opposite directions, each wheel will need its own power.
 :::info
 Oftentimes, teams will have a problem where everything seems right in the code but the robot is not moving as expected. If this occurs, the orientation of the mecanum wheels may be incorrect. The rollers should form an "X" shape from the top of the robot.
 :::
@@ -61,7 +68,7 @@ Oftentimes, teams will have a problem where everything seems right in the code b
 ## Creating a Field-Centric-Based Autonomous Program
 
 :::caution
-The following code uses field-centric drive code to control the mecanum wheels, not the robot-centric code used above. To gain a solid understanding of field-centric driving please refer to the GM0 link in the resources tab of this module. 
+The following code uses field-centric drive code to control the mecanum wheels, not the robot-centric code used above. To gain a solid understanding of field-centric driving please refer to the GM0 link in the resources tab of this module.
 :::
 :::danger
 The following code is provided to showcase a simple method of autonomously controlling a mecanum drive system without cluttering the code with odometry functions. **For a more accurate and sophisticated mecanum control system, please refer to the mecanum modules in the autonomous driving section.**
@@ -71,20 +78,22 @@ The following code is provided to showcase a simple method of autonomously contr
 
 <iframe width="100%" height="422" src="https://www.youtube.com/embed/s5djL5tj8js" title="Meet 3 Match 4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-
 The logic behind this code is fairly simple, we make use of field-centric driving to make the robot drive forward or sideways for some number of seconds. Making use of encoders should make this movement fairly accurate as a velocity PID will be automatically enabled. However please note that **later modules will provide code that is far superior to the following implementation!**
-We also use a heavily simplified version of a PID controller to enable the robot to turn to a desired angle while moving, making use of the IMU to do this. 
+We also use a heavily simplified version of a PID controller to enable the robot to turn to a desired angle while moving, making use of the IMU to do this.
 
-Note that because we make use of field centric drive code the robot will always drive and strafe in the same direction regardless of the robots heading. Field centric does this by modifying the drive and strafe commands in accordance with the robot's heading such that the velocity commands will make the robot move in the same direction regardless of its orientation.  **For instance, setting the strafe velocity to -0.1 will always make the robot move sideways to the left regardless of what direction the robot is in. If we made use of robot centric driving, setting the strafe command to -0.1 when the robot is facing 90 degrees would actually make it drive forwards.**
+Note that because we make use of field centric drive code the robot will always drive and strafe in the same direction regardless of the robots heading. Field centric does this by modifying the drive and strafe commands in accordance with the robot's heading such that the velocity commands will make the robot move in the same direction regardless of its orientation. **For instance, setting the strafe velocity to -0.1 will always make the robot move sideways to the left regardless of what direction the robot is in. If we made use of robot centric driving, setting the strafe command to -0.1 when the robot is facing 90 degrees would actually make it drive forwards.**
 
 This makes things alot easier for the programmer as they do not need to worry about adjusting the command velocities to account for a change in the robot's heading.
 
 ### Code
+
 :::info
-Note that in the following line: `double turn = Range.clip(angleDiff * 0.01, -1, 1);` we set the power that the robot should turn at to reach the angle desired.  You can modify this speed as needed by changing the constant 0.01 as needed, increasing it to increase the turn speed, and decreasing it to slow the robot down. 
+Note that in the following line: `double turn = Range.clip(angleDiff * 0.01, -1, 1);` we set the power that the robot should turn at to reach the angle desired. You can modify this speed as needed by changing the constant 0.01 as needed, increasing it to increase the turn speed, and decreasing it to slow the robot down.
 :::
+
 #### Robot Class
-```java 
+
+```java
 public class Robot {
 
    Motor fLeftMotor, bLeftMotor, fRightMotor, bRightMotor;
@@ -97,18 +106,18 @@ public class Robot {
     for (LynxModule hub : allHubs) {
       hub.setBulkCachingMode(LynxModule.BulkCachingMode.AUTO);
     }
-    
+
     // We recommend that you make use of encoders if using this method!
     Motor fLeftMotor = new Motor(hardwareMap, "front_left_motor");
     Motor bLeftMotor = new Motor(hardwareMap, "back_left_motor");
     Motor fRightMotor = new Motor(hardwareMap, "front_right_motor");
     Motor bRightMotor = new Motor(hardwareMap, "back_right_motor");
-    
+
     // Reverse the right side motors
     // Reverse left motors if you are using NeveRests
     fRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
     bRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
-    
+
     this.fLeftMotor = fLeftMotor;
     this.fRightMotor = fRightMotor;
     this.bLeftMotor = bLeftMotor;
@@ -118,14 +127,14 @@ public class Robot {
     this.allHubs = allHubs;
   }
 
-  // Use the IMU to return the angle of the robot. 
+  // Use the IMU to return the angle of the robot.
   public double getAngle() {
     Orientation angles =
         gyro.getAngularOrientation(
             AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES); // ZYX is Original
     return angles.firstAngle;
   }
-  
+
   // Remaps the given angle into the range (-180, 180].
   public static double normalize(double degrees) {
     double normalized_angle = Angle.normalizePositive(degrees);
@@ -135,22 +144,22 @@ public class Robot {
     return normalized_angle;
   }
 
-  // Drive or Strafe to at some power while turning to some angle.  
+  // Drive or Strafe to at some power while turning to some angle.
   public void driveFieldCentric(double drive, double angle, double strafe) {
     // https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html#field-centric
     double fRightPow, bRightPow, fLeftPow, bLeftPow;
     double botHeading = -Math.toRadians(gyro.getAngularOrientation().firstAngle);
-    
+
     // Compute how much you need to turn to maintain that angle
     currAngle = getAngle();
     double angleDiff = normalize(currAngle - angle);
-    double turn = Range.clip(angleDiff * 0.01, -1, 1); // multiply by some constant 
+    double turn = Range.clip(angleDiff * 0.01, -1, 1); // multiply by some constant
     // so the robot turns smoothly
-  
+
 
     double rotX = drive * Math.cos(botHeading) - strafe * Math.sin(botHeading);
     double rotY = drive * Math.sin(botHeading) + strafe * Math.cos(botHeading);
-    
+
     // Do the math found in GM0
     double denominator = Math.max(Math.abs(strafe) + Math.abs(drive) + Math.abs(turn), 1);
     fLeftPow = (rotY + rotX + turn) / denominator;
@@ -171,7 +180,7 @@ public class Robot {
   public void stopDrive() {
     setDrivePowers(0, 0, 0, 0);
   }
- 
+
   // Misc. Functions / Overloaded Method Storage
   private double getVoltage() {
     double voltage = Double.MIN_VALUE;
@@ -186,11 +195,13 @@ public class Robot {
   public void runOpMode() throws InterruptedException {}
 }
 ```
-#### Tele-Op Class 
-This modified version of the class above can be utilized during Tele-op to use field-centric driving in the Tele-op period. It uses the same math but replaces the predeterimined `drive` and `strafe` values with the the left joystick and the right joystick values (Split Arcade) as the inputs. 
 
-:::info 
-If you would like to learn more about how field centric drive works and the math behind it, you can access it [here](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html#field-centric-final-sample-code) 
+#### Tele-Op Class
+
+This modified version of the class above can be utilized during Tele-op to use field-centric driving in the Tele-op period. It uses the same math but replaces the predeterimined `drive` and `strafe` values with the the left joystick and the right joystick values (Split Arcade) as the inputs.
+
+:::info
+If you would like to learn more about how field centric drive works and the math behind it, you can access it [here](https://gm0.org/en/latest/docs/software/tutorials/mecanum-drive.html#field-centric-final-sample-code)
 :::
 
 ```java
@@ -214,8 +225,10 @@ public void fieldCentricTeleop(Gamepad gamepad) {
   fRightMotor.setPower(fRightPow);
 }
 ```
+
 #### Autonomous Implementation
-```java 
+
+```java
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 @Autonomous(name = "Sample", group = "Robot")
@@ -233,15 +246,15 @@ public class BluePrimary extends Robot {
     // drive backwards at 15% power at an angle of 0 degrees for 500 milliseconds
       driveFieldCentric(-0.15, 0, 0);
     }
-    
-    stopDrive(); // always stop the drive train after a movement! 
+
+    stopDrive(); // always stop the drive train after a movement!
 
     timer.reset(); // always reset the timer before starting another movement!
     while (timer.milliseconds() <= 1200) {
-    // move right at 30% power at an angle of 10 degrees 
+    // move right at 30% power at an angle of 10 degrees
       dt.driveFieldCentric(0, 10, 0.3);
     }
-    
+
   }
 }
 ```

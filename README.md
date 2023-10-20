@@ -1,7 +1,5 @@
 # README
 
-This website is built using React, MDX, and [Docusaurus](https://docusaurus.io/).  
-
 ### Installation
 
 ```

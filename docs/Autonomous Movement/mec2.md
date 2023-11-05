@@ -152,6 +152,7 @@ As mentioned above, with the returned odometry position of the robot as the feed
 
 Some important notes regarding the code: 
 * Note that this code is inside a while-loop. This means that if you are using manual mode with your hubs, you must clear the bulk caching mode of all hubs in the loop.
+* To ensure efficient turning, all angles must be normalized (constrained to [-180, 180] rather than [0, 360]).
 * The robot will keep trying to drive to the listed position until one of two conditions is achieved:
   * The returned odometry position is close enough to the target position (recommended to be 1 to 2 inches)
   * The loop has exceeded its time limit (this should only be triggered if there is something obstructing the robot's path)
@@ -175,7 +176,8 @@ public void moveToPosition(double targetX, double targetY, double targetAngle, d
          
          double xError = targetX - odometry.getX();
          double yError = targetY - odometry.getY();
-         double angleError = targetAngle - odometry.getAngle();
+         // normalize the angle to ensure efficient turning
+         double angleError = normalizeAngle(targetAngle - odometry.getAngle());
          
          double xP = k_P * xError;
          double yP = k_P * yError;
@@ -211,6 +213,19 @@ public void moveToPosition(double targetX, double targetY, double targetAngle, d
      
      return d;
  }
+
+  public double normalizeAngle(double rawAngle) {
+    double scaledAngle = rawAngle % 360;
+    if (scaledAngle < 0) {
+      scaledAngle += 360;
+    }
+
+    if (scaledAngle > 180) {
+      scaledAngle -= 360;
+    }
+
+    return scaledAngle;
+  }
 ```
 If you don't recall why we need to clear the Bulk Cache of the LynxModules in the loop, review it in the Lynx Module section. 
 

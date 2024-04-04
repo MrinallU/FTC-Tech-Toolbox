@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 # Introduction
 :::note Resources
-
+* [Learn Java for FTC Book](https://github.com/alan412/LearnJavaForFTC/blob/master/LearnJavaForFTC.pdf) - Very Important read for those new to FTC!
 *  [Our tutorial on downloading Android Studio](https://www.youtube.com/watch?v=ig9YUI4wu6c&t=50s)
 * [Official FTC Programming Resources](https://www.firstinspires.org/resource-library/ftc/technology-information-and-resources)
 * [GM0's Getting Started Section](https://gm0.org/en/latest/docs/software/getting-started/index.html)
@@ -31,3 +31,6 @@ Aside from understanding these topics, having the ability to implement these top
 
 ## Asking for Help
 An important aspect of being successful in FTC robotics is not being afraid to ask for help when stuck with a problem or confused about a topic. Here are some helpful forums where you can ask for assistance and receive aid from experienced programmers: 
+
+* FTC Discord (ask in the programming-help channel) - https://discord.gg/first-tech-challenge
+* Official FTC Forum - https://ftcforum.firstinspires.org/

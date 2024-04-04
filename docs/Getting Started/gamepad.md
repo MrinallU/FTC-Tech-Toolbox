@@ -56,6 +56,7 @@ if(gamepad1.a){
     servo.setPosition(0.5);  //Task if a is pressed
 }else if(gamepad1.b){
     servo.setPosition(1);    //Task if b is pressed
+}
 ```
 
 ### Using a Double Output

@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 # Introduction
-:::note Resources
+:::note Recommended Prerequisites
 * [Learn Java for FTC Book](https://github.com/alan412/LearnJavaForFTC/blob/master/LearnJavaForFTC.pdf) - Very Important read for those new to FTC!
-*  [Our tutorial on downloading Android Studio](https://www.youtube.com/watch?v=ig9YUI4wu6c&t=50s)
+* [Our tutorial on downloading Android Studio](https://www.youtube.com/watch?v=ig9YUI4wu6c&t=50s)
 * [Official FTC Programming Resources](https://www.firstinspires.org/resource-library/ftc/technology-information-and-resources)
 * [GM0's Getting Started Section](https://gm0.org/en/latest/docs/software/getting-started/index.html)
 * [5040's Into to FTC Programming](https://youtu.be/CdcpNZzekb0) - Watch before proceeding. Lesson on the fundamental of FTC programming (opModes, running code, motors, servos)

@@ -14,5 +14,5 @@ Luckily, our Commonly Programmed Modules section already explains the mecanum an
 
 ## Mecanum Drive 
 * [Explanation](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Mec)
-* TeleOp Implementation](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Mec)
+* [TeleOp Implementation](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Mec)
 * [Case Study](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Mec)

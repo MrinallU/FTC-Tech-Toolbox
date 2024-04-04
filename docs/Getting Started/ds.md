@@ -8,7 +8,7 @@ In FTC, the first part of your robot that you will start off with programming is
 Luckily, our Commonly Programmed Modules section already explains the mecanum and tank drive train in extensive detail, so here we will just provide links to go to the correct pages.
 
 ## Tank Drive
-* [Explanation]([https://github.com/alan412/LearnJavaForFTC/blob/master/LearnJavaForFTC.pdf](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Tank))
+* [Explanation](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Tank)
 * [TeleOp Implementation](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Tank#teleop-implementation)
 * [Case Study](https://ftc-tech-toolbox.vercel.app/docs/Commonly%20Programmed%20Modules/Tank#case-studies)
 

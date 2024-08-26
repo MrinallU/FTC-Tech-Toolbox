@@ -6,6 +6,8 @@ import Layout from '@theme/Layout';
 import HomepageFeatures from '@site/src/components/HomepageFeatures';
 import { Analytics } from '@vercel/analytics/react';
 import styles from './index.module.css';
+import {Redirect} from '@docusaurus/router';
+
 
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();

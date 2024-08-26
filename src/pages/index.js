@@ -10,7 +10,7 @@ import styles from './index.module.css';
 function HomepageHeader() {
   const {siteConfig} = useDocusaurusContext();
     React.useEffect(() => {
-    window.location.href = useBaseUrl('/docs/category/getting-started');
+    window.location.href = useBaseUrl('docs/category/getting-started');
   }, []);
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>

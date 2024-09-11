@@ -32,7 +32,10 @@ function HomepageHeader() {
 export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
-    <Analytics />
-    <Redirect to="/docs/category/getting-started" />
+      <main>
+            <Analytics />
+            <Redirect to="/docs/category/getting-started" />
+      </main>
+
   );
 }

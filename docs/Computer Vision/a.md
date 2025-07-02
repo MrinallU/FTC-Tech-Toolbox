@@ -16,3 +16,7 @@ Once you have the camera you are using, you can plug it into the USB 2.0 port on
 ### Vuforia vs OpenCV
 
 The two main libraries used for vision detection are the Vuforia and OpenCV libraries. This guide will go over the implementation of both. However, our team highly recommends the use of OpenCV due to the more reliable results and in-depth capabilities.
+
+### Limelight Camera
+
+Recent seasons in FTC have seen the use of the Limelight camera be increasingly popular in FTC applications. This camera is a great tool for streamlining and simplifying teams looking to perform object detection and computer vision applications. However, it is by no means a necessity for computer vision. For teams not wanting to purchase the limelight, learning to using OpenCV will work perfectly fine in all vision applications.

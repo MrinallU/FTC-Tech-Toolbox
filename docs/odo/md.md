@@ -159,4 +159,175 @@ public class EncBot {
 
 }
 ```
+## Gobilda Pinpoint Odometry
+
+Gobilda has recently came out with their own odometry pod setup, this allows teams to completely outsource their implementation of odometry pods and have a "plug and play" odometry implementation that is accurate to the inch. If possible, we now highly recommend teams to purchase and use the Pinpoint along with the Gobilda odometry wheels in their implementation. This may take the fun out of doing a custom implementation, but from our testing, we have found the pinpoint + Gobilda pods to be very accurate and reliable.
+
+### What's Needed
+
+The PinPoint has a built in IMU within it, so if you choose to use this with the two pods, you can base your localization solely off the pinpoint system. You use encoder cables to plug both your pods in to the pinpoint. While we recommend using the Gobilda Pods along with the pinpoint, due to their perfect and tested tensioning/accuracy, using custom pods will be perfectly fine as well. Just ensure your pods are tensioned. Our team used custom pods along with the pinpoint for the State and World Championships in Into the Deep and also had very positive results.
+
+### Implementation
+
+When first instantiating the Pinpoint object in your code, you want to create an object of the PinPoint Driver class
+
+```java
+public GobildaPinpointDriver odo;
+```
+
+Next, you have to instantiate it as part of your Hardware Map, just like a normal hardware device
+
+```java
+odo = hardwareMap.get(GoBildaPinpointDriver.class,"odo");
+```
+Next, you must provide the pod offsets. These offsets are the distances that both the X and Y pods are from where the Pinpoint is on your robot. For both pods, you should measure the axis that is perpendicular to the direction of the deadwheel to get this offset. That means, for the Y Pod Offset, you are really measuring the X-axis distance between the pinpoint and the Y deadwheel. 
+
+For the X offset, left is positive and right is negative. For the Y pod offset, forward is positive and backwards is negative.
+
+Here is an example of setting pod offsets(don't use these same ones on your robot; remeasure your own as described above)
+
+```java
+odo.setOffsets(184.15, -204.7875);
+```
+
+Finally, you have to provide the encoder resolution of the encoder you are using. If you are using the GoBilda Pods, this will be available as a preset variable for you to just input. However, if you are using custom pods with different encoders, you must divide the Counts Per Rotation(CPR) of your encoder by the odometry wheel diameter(in mm).
+
+The most common custom pod implementations use the Rev Throughbore Encoder along with the Rotocaster 35 mm omni wheel. For this specific case, the encoder resolution is provided in the line below.
+
+```java
+odo.setEncoderResolution(74.4998181157); //Encoder Resolution for 35 mm deadwheel w/ Rev Throughbore
+```
+
+Finally, you want to reset the Pinpoint from previous runs to ensure proper function
+
+```java
+odo.resetPosandIMU();
+```
+
+
+### Code Implementation
+
+Putting it all together, here is an implementation of a base robot class with the Pinpoint being used for the odometry localization.
+
+```java
+
+    public List<LynxModule> allHubs;
+
+    Motor fLeftMotor;
+    Motor fRightMotor;
+    Motor bLeftMotor;
+    Motor bRightMotor;
+
+    Motor extendo;
+
+    Motor rightSlide, leftSlide;
+
+    DistanceSensor specDistance;
+
+    public Servo rotation;
+
+    public Servo hang;
+    public Servo claw;
+    public Servo wrist;
+    public Servo blocker;
+    public Servo leftArm;
+    public Servo rightArm;
+    public Servo leftIntake;
+    public Servo rightIntake;
+    public Servo specimen;
+
+    public IMU imu;
+
+
+
+
+
+
+    
+    public GoBildaPinpointDriver odo;
+
+    public Drive dt;
+
+    double leftArmDown = .785, rightArmDown = 0.166;
+    double leftArmUp = 0.25, rightArmUp = 0.703;
+
+
+    public void initHardware(OpMode opMode){
+
+        //Enable Manual Bulk Caching
+        allHubs = hardwareMap.getAll(LynxModule.class);
+        for (LynxModule hub : allHubs) {
+            hub.setBulkCachingMode(LynxModule.BulkCachingMode.MANUAL);
+        }
+        resetCache();
+
+        //Initialize Motors
+        fLeftMotor = new Motor(hardwareMap, "fLeft", false);
+        bLeftMotor = new Motor(hardwareMap, "bLeft", false);
+        bRightMotor = new Motor(hardwareMap, "bRight", false);
+        fRightMotor = new Motor(hardwareMap, "fRight", false);
+
+        bRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+        fRightMotor.setDirection(DcMotorSimple.Direction.REVERSE);
+
+        extendo = new Motor(hardwareMap, "linkage");
+        rightSlide = new Motor(hardwareMap, "rightSlide");
+        leftSlide = new Motor(hardwareMap, "leftSlide");
+        rightSlide.retMotorEx();
+        leftSlide.retMotorEx();
+        extendo.retMotorEx();
+        rightSlide.useEncoder();
+        leftSlide.useEncoder();
+        extendo.useEncoder();
+
+
+        imu = hardwareMap.get(IMU.class, "imu");
+        imu.initialize(
+                new IMU.Parameters( new RevHubOrientationOnRobot(
+                        RevHubOrientationOnRobot.LogoFacingDirection.RIGHT,
+                        RevHubOrientationOnRobot.UsbFacingDirection.UP
+                )
+                ));
+        resetYaw();
+
+
+        //Initialize IMU
+
+
+        dt = new Drive(fLeftMotor, fRightMotor, bLeftMotor, bRightMotor, imu, opMode);
+
+
+
+
+        odo = hardwareMap.get(GoBildaPinpointDriver.class,"odo");
+
+        odo.setOffsets(184.15, -204.7875);
+
+        odo.setEncoderResolution(74.4998181157);
+
+
+
+        odo.setEncoderDirections(GoBildaPinpointDriver.EncoderDirection.REVERSED, GoBildaPinpointDriver.EncoderDirection.REVERSED);
+
+        odo.resetPosAndIMU();
+```
+
+### Getting Position Data
+Lastly, you must know how to actually get the position data from the Pinpoint for use in your programs. To do this, first ensure you have the proper initialization for the Pinpoint as described above. After calling this initialization in your OpMode, you can then find the position values. 
+
+You first need to create a Pose2D object that will hold the PinPoint position. Then it becomes relatively intuitive to print each component of the position out.
+
+```java
+Pose2D pos = odo.getPosition();
+
+double x = pos.getX(DistanceUnit.INCH);
+
+double y = pos.getY(DistanceUnit.INCH);
+
+double angle = pos.getHeading(AngleUnit.DEGREES);
+
+```
+
+
+
 
